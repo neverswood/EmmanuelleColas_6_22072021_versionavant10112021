@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/38e93aa0fe.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="index.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" rel="stylesheet" alt="Fisheye Home page" id="logo">Fish<i class="fas fa-camera"
+                aria-hidden="true"></i>
+            ye</a>
+    </header>
+    <main id="photographer-page">
+
+        <section id="presentation-photographer">
+        </section>
+        <section id="work-photographer">
+            <div class="sorting">
+                <label for="btn-sort" id="sorting">Trier par</label>
+                <div id="select-option">
+                    <button id="btn-sort" role="button" class="btn btn-sort" aria-haspopup="listbox"
+                        aria-expanded="false" aria-labelledby="arialabel">
+                        <div id="btn-sort__selected">popularité</div>
+                        <span id="btn-sort__arrow"><i class="fas fa-chevron-up"></i><i
+                                class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <ul class="listOption" id="listOption" role="listbox" aria-activedescendant="popularité"
+                        tabindex="0" style="display: none">
+                        <li id="popularity" class="btn-option" role="option" data-value="popularity"
+                            aria-labelledby="btn-popularity" aria-selected="false">
+                            Popularité
+                        </li>
+                        <li id="date" class="btn-option" role="option" data-value="date" aria-labelledby="btn-date"
+                            aria-selected="false">
+                            Date
+                        </li>
+                        <li id="title" class="btn-option" role="option" data-value="title" aria-labelledby="btn-title"
+                            aria-selected="false">
+                            Titre
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="box-list" id="box-list">
+            </div>
+            <div class="likes-price">
+                <span class="totalLike"></span>
+                <span class="price"></span>
+            </div>
+        </section>
+        <section id="modal-photographer">
+            <div id="bground">
+                <div class="content">
+                    <span class="close" id="close"></span>
+                    <div id="modal-message"></div>
+                    <div id="modal-body">
+                        <div id="header-form"></div>
+                        <form name="contact" id="sectionForm" class="sectionFormOpen" action="photographer.html"
+                            method="get">
+                            <div class="formData">
+                                <label for="first">Prénom</label><br>
+                                <input class="text-control not-valid" type="text" id="first" name="first" /><br>
+                                <span class="error" id="firstError"></span>
+                            </div>
+                            <div class="formData">
+                                <label for="last">Nom</label><br>
+                                <input class="text-control" type="text" id="last" name="last" /><br>
+                                <span class="error" id="lastError"></span>
+                            </div>
+                            <div class="formData">
+                                <label for="email">E-mail</label><br>
+                                <input class="text-control" type="email" id="email" name="email" /><br>
+                                <span class="error" id="emailError"></span>
+                            </div>
+                            <div class="formData">
+                                <label for="message">Votre message</label><br>
+                                <input class="text-control--modified" type="text" id="message" name="message" /><br>
+                            </div>
+                            <input class="btn-submit button" type="submit" value="Envoyer" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="caroussel" aria-label="image-closeup-view">
+
+
+        </section>
+
+
+    </main>
+    <script src="./js/index.js" type="module"></script>
+
+
+</body>
+
+</html>
