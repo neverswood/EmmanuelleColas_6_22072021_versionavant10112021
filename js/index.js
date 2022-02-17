@@ -5,6 +5,7 @@ const main = async () => {
   const data = await response.json();
 
   if (window.location.pathname.includes("/photographer.html")) {
+    //
   } else {
     const homePage = new HomePage(data);
     document.getElementById("photographers").innerHTML =
