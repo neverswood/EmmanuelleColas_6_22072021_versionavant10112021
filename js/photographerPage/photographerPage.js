@@ -1,3 +1,4 @@
+import ModalContact from "./modalContact.js";
 import PhotographerInfos from "./photographerInfos.js";
 
 export default class PhotographerPage {
@@ -10,6 +11,7 @@ export default class PhotographerPage {
     });
     //
     this.photographerInfos = new PhotographerInfos(this.photographer);
+    this.modalContact = new ModalContact(this.photographer);
     this.drawPhotographerPage();
     console.log("oh", this.photographer);
   }
@@ -20,9 +22,8 @@ export default class PhotographerPage {
     );
     photographerPresentation.innerHTML =
       this.photographerInfos.renderPhotographerInfos();
-  }
-
-  displayPhotographerInfos() {
-    return this.photographerInfos.renderPhotographerInfos();
+    const modalContact = document.getElementById("header-form");
+    modalContact.innerHTML = this.modalContact.renderModalContact();
+    this.modalContact.bindModalContactEventListeners();
   }
 }

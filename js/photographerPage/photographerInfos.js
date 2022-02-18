@@ -1,20 +1,25 @@
 export default class PhotographerInfos {
   constructor(photographers) {
     this.photographers = photographers;
-    //this.displayPhotographerInfos();
-    console.log("rou", this.photographers);
   }
 
   renderPhotographerInfos() {
+    console.log(
+      this.photographers.tags.map((tag) => {
+        return tag;
+      })
+    );
     return `
         <div>
         <h1 class="photographer-name">${this.photographers.name}</h1>
         <h2>${(this.photographers.city, this.photographers.country)}</h2>
         <p>${this.photographers.tagline}</p>
         <div class="photographerPage-tag">
-        ${this.photographers.tags.map(
-          (tag) => `<a href="#"><span data-filter=${tag}>#${tag}</span></a>`
-        )}
+        ${this.photographers.tags
+          .map(
+            (tag) => `<a href="#"><span data-filter=${tag}>#${tag}</span></a>`
+          )
+          .join("")}
         </div>
         </div>
         <button id="open" class="open" type="button">Contactez-moi</button>

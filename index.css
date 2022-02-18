@@ -192,6 +192,128 @@ main {
   margin: 50px 400px 50px 50px;
 }
 
+/* Modal Contact */
+
+#bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #db8876;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.sectionFormOpen {
+  display: block;
+}
+
+.sectionFormClose {
+  display: none;
+}
+
+.formData {
+  margin-bottom: 10px;
+  margin: 0 20px;
+}
+
+label {
+  color: black;
+  font-size: 22px;
+}
+
+.text-control {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+.text-control--modified {
+  width: 100%;
+  height: 100px;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 42px;
+  height: 42px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.btn-submit {
+  background-color: #901c1c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  width: 115px;
+  height: 45px;
+  margin: 20px;
+}
+
+#header-form {
+  margin: auto;
+}
+
+#modal-name {
+  display: block;
+  color: black;
+  font-size: 45px;
+  margin: 0 100px 22px 18px;
+}
+
+#modal-message {
+  height: 90px;
+  color: black;
+  font-size: 20px;
+  margin: 90px;
+}
+
+.error {
+  font-size: 1rem;
+  color: #c31212;
+  display: block;
+}
+
 @media screen and (max-width: 764px) {
   header {
     padding: 0;
