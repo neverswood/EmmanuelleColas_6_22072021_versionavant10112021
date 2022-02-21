@@ -1,3 +1,5 @@
+import Dropdown from "./dropdown.js";
+import Gallery from "./gallery.js";
 import ModalContact from "./modalContact.js";
 import PhotographerInfos from "./photographerInfos.js";
 
@@ -10,10 +12,15 @@ export default class PhotographerPage {
       return photographer.id === Number(this.id);
     });
     //
+    this.mediaPhotographerList = data.medias.filter((media) => {
+      return media.photographerId === Number(this.id);
+    });
+    //
     this.photographerInfos = new PhotographerInfos(this.photographer);
     this.modalContact = new ModalContact(this.photographer);
+    this.dropdown = new Dropdown();
+    this.gallery = new Gallery(this.mediaPhotographerList);
     this.drawPhotographerPage();
-    console.log("oh", this.photographer);
   }
 
   drawPhotographerPage() {
@@ -25,5 +32,7 @@ export default class PhotographerPage {
     const modalContact = document.getElementById("header-form");
     modalContact.innerHTML = this.modalContact.renderModalContact();
     this.modalContact.bindModalContactEventListeners();
+    const gallery = document.getElementById("box-list");
+    gallery.innerHTML = this.gallery.renderGallery();
   }
 }
