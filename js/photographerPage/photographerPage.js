@@ -18,9 +18,10 @@ export default class PhotographerPage {
     //
     this.photographerInfos = new PhotographerInfos(this.photographer);
     this.modalContact = new ModalContact(this.photographer);
-    this.dropdown = new Dropdown();
+    this.dropdown = new Dropdown(this.mediaPhotographerList, this);
     this.gallery = new Gallery(this.mediaPhotographerList);
     this.drawPhotographerPage();
+    this.drawGallery();
   }
 
   drawPhotographerPage() {
@@ -32,6 +33,9 @@ export default class PhotographerPage {
     const modalContact = document.getElementById("header-form");
     modalContact.innerHTML = this.modalContact.renderModalContact();
     this.modalContact.bindModalContactEventListeners();
+  }
+
+  drawGallery() {
     const gallery = document.getElementById("box-list");
     gallery.innerHTML = this.gallery.renderGallery();
   }

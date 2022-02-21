@@ -1,6 +1,7 @@
 export default class Dropdown {
-  constructor(medias) {
+  constructor(medias, photographerPage) {
     this.medias = medias;
+    this.photographerPage = photographerPage;
     this.listbox = document.querySelector('[role="listbox"]');
     //   this.addSelectOptionEventListener();
     //this.keydownEvent();
@@ -38,7 +39,7 @@ export default class Dropdown {
 
     listOption.addEventListener("click", (e) => {
       this.sortMedias(e.target.dataset.value);
-      this.uiPhotographerPage.drawGallery();
+      this.photographerPage.drawGallery();
     });
 
     window.addEventListener("click", (e) => {
