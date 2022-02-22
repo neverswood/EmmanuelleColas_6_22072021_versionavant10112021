@@ -1,16 +1,18 @@
 export default class Likes {
-  constructor(medias) {
+  constructor(medias, photographer) {
     this.medias = medias;
+    this.photographer = photographer;
     this.sumLike = this.medias.reduce((currentSumLike, medium) => {
       return medium.likes + currentSumLike;
     }, 0);
+    console.log(this.medias);
   }
 
   displayLikesAndPrice() {
-    return `<div>
+    return `
       <span class="totalLike">${this.sumLike} <i class="fas fa-heart"></i></span>
-      <span class="price"></span>
-      </div>`;
+      <span class="price">${this.photographer.price} €/jour</span>
+      `;
   }
 
   incrementLikes() {
@@ -29,7 +31,9 @@ export default class Likes {
   displaySumLikes(val) {
     document.querySelector(
       ".likes-price"
-    ).innerHTML = `<span class="totalLikes">${val} <i class="fas fa-heart"></i></span>`;
+    ).innerHTML = `<span class="totalLikes">${val} <i class="fas fa-heart"></i></span>
+    <span class="price">${this.photographer.price} €/jour</span>
+    `;
   }
 
   //Likes under the medias

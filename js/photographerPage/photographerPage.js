@@ -21,7 +21,7 @@ export default class PhotographerPage {
     this.modalContact = new ModalContact(this.photographer);
     this.dropdown = new Dropdown(this.mediaPhotographerList, this);
     this.gallery = new Gallery(this.mediaPhotographerList);
-    this.likes = new Likes(this.mediaPhotographerList);
+    this.likes = new Likes(this.mediaPhotographerList, this.photographer);
     this.drawPhotographerPage();
     this.drawGallery();
   }
