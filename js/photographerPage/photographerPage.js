@@ -1,5 +1,6 @@
 import Dropdown from "./dropdown.js";
 import Gallery from "./gallery.js";
+import Likes from "./likes.js";
 import ModalContact from "./modalContact.js";
 import PhotographerInfos from "./photographerInfos.js";
 
@@ -20,6 +21,7 @@ export default class PhotographerPage {
     this.modalContact = new ModalContact(this.photographer);
     this.dropdown = new Dropdown(this.mediaPhotographerList, this);
     this.gallery = new Gallery(this.mediaPhotographerList);
+    this.likes = new Likes(this.mediaPhotographerList);
     this.drawPhotographerPage();
     this.drawGallery();
   }
@@ -33,10 +35,14 @@ export default class PhotographerPage {
     const modalContact = document.getElementById("header-form");
     modalContact.innerHTML = this.modalContact.renderModalContact();
     this.modalContact.bindModalContactEventListeners();
+    document.querySelector(".likes-price").innerHTML =
+      this.likes.displayLikesAndPrice();
   }
 
   drawGallery() {
     const gallery = document.getElementById("box-list");
     gallery.innerHTML = this.gallery.renderGallery();
+    this.likes.incrementLikesMedias();
+    this.likes.incrementLikes();
   }
 }

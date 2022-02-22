@@ -366,6 +366,20 @@ main {
   font-size: 17px;
 }
 
+.likes-price {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 45px;
+  width: 285px;
+  background-color: #db8876;
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}
+
 /* Modal Contact */
 
 #bground {
