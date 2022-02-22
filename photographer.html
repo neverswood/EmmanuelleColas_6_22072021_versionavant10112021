@@ -29,7 +29,9 @@
                 <div id="select-option">
                     <button id="btn-sort" role="button" class="btn btn-sort" aria-haspopup="listbox"
                         aria-expanded="false" aria-labelledby="arialabel">
-                        <div id="btn-sort__selected">popularité</div>
+                        <div id="btn-sort__selected">
+                            <p id="selected">popularité</p>
+                        </div>
                         <span id="btn-sort__arrow"><i class="fas fa-chevron-up"></i><i
                                 class="fas fa-chevron-down"></i></span>
                     </button>
@@ -37,7 +39,7 @@
                         tabindex="0" style="display: none">
                         <li id="popularity" class="btn-option" role="option" data-value="popularity"
                             aria-labelledby="btn-popularity" aria-selected="false">
-                            Popularité
+                            Popularité<i class="fas fa-chevron-down"></i>
                         </li>
                         <li id="date" class="btn-option" role="option" data-value="date" aria-labelledby="btn-date"
                             aria-selected="false">

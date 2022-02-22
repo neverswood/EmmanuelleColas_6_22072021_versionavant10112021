@@ -40,10 +40,14 @@ export default class Dropdown {
     listOption.addEventListener("click", (e) => {
       this.sortMedias(e.target.dataset.value);
       this.photographerPage.drawGallery();
+      if (e.target.matches("li")) {
+        document.getElementById("selected").innerText = e.target.textContent;
+        document.getElementById("selected").style.paddingBottom = "23px";
+      }
     });
 
     window.addEventListener("click", (e) => {
-      if (!e.target.matches("#select-option *")) {
+      if (e.target.matches("#listOption *")) {
         listOption.style.display = "none";
       }
     });
