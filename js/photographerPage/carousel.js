@@ -26,6 +26,7 @@ export default class Carousel {
 
     close.addEventListener("click", () => {
       document.getElementById("carousel").style.display = "none";
+      document.getElementById("photographer-page").style.position = "initial";
     });
 
     medias.forEach((media) => {
