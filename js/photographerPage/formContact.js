@@ -14,6 +14,15 @@ export default class FormContact {
     document.getElementById(`${label}Error`).textContent = "";
   }
 
+  logInput() {
+    const firstName = document.getElementById("first").value;
+    console.log("ValeurInputFirstName", firstName);
+    const lastName = document.getElementById("last").value;
+    console.log("ValeurInputLastName", lastName);
+    const email = document.getElementById("email").value;
+    console.log("ValeurInputEmail", email);
+  }
+
   addEventListener() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -54,6 +63,7 @@ export default class FormContact {
         document.getElementById("modal-message").innerHTML =
           "Votre message a bien été envoyé !";
       }
+      this.logInput();
     });
   }
 }

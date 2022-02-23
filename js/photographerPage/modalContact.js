@@ -31,7 +31,6 @@ export default class ModalContact {
     const buttonContact = document.getElementById("open");
     const modalClose = document.querySelectorAll(".close");
     buttonContact.addEventListener("click", () => {
-      console.log("hui");
       this.displayOpenModal();
     });
     modalClose.forEach((btn) => {
