@@ -1,3 +1,4 @@
+import Carousel from "./carousel.js";
 import Dropdown from "./dropdown.js";
 import Gallery from "./gallery.js";
 import Likes from "./likes.js";
@@ -22,6 +23,7 @@ export default class PhotographerPage {
     this.dropdown = new Dropdown(this.mediaPhotographerList, this);
     this.gallery = new Gallery(this.mediaPhotographerList);
     this.likes = new Likes(this.mediaPhotographerList, this.photographer);
+    this.carousel = new Carousel(this.mediaPhotographerList);
     this.drawPhotographerPage();
     this.drawGallery();
   }
@@ -44,5 +46,8 @@ export default class PhotographerPage {
     gallery.innerHTML = this.gallery.renderGallery();
     this.likes.incrementLikesMedias();
     this.likes.incrementLikes();
+    document.getElementById("carousel").innerHTML =
+      this.carousel.displayCarousel();
+    this.carousel.bindCarouselEventListener();
   }
 }

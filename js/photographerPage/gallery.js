@@ -5,6 +5,7 @@ export default class Gallery {
     this.medias = medias;
     this.options = document.querySelectorAll(".btn-option");
     this.mediaFactory = new MediaFactory();
+    console.log("moun", this.medias);
   }
 
   renderGallery() {

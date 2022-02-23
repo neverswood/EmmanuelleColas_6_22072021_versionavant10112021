@@ -502,45 +502,145 @@ label {
   display: block;
 }
 
-@media screen and (max-width: 764px) {
-  header {
-    padding: 0;
-    max-width: 0;
-  }
+/* Modal Carousel */
 
-  #logo {
-    position: absolute;
-    margin: 0 0 0 10px;
-  }
+#carousel {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
 
-  #header-navbar {
-    position: absolute;
-    top: 100px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+#carousel__div {
+  display: flex;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: white;
+  overflow: hidden;
+  min-height: 100vh;
+}
 
-  .return-main {
-    display: none;
-  }
+#carousel img,
+#carousel video {
+  width: 500px;
+  height: 547px;
+  object-fit: cover;
+}
 
-  main {
-    width: 100%;
-    flex-direction: column;
-  }
+.carousel__div--container {
+  display: flex;
+  flex-direction: column;
+  height: 677px;
+  width: 635px;
+  margin: auto;
+}
 
-  #photographers {
-    margin-top: 100px;
-  }
+.carousel__gallery--container {
+  height: 100%;
+}
 
-  .title {
-    font-size: 14px;
-    top: 35px;
-    right: 30px;
-  }
+.carousel__viewport--image,
+.carousel__viewport--video {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  .photographer {
-    width: 100%;
-    margin: 70px 0;
-  }
+.titleCarousel {
+  color: #901c1c;
+  margin: 15px 0 0 72px;
+}
+
+.media {
+  display: flex;
+  justify-content: center;
+  width: 502px;
+  height: 540px;
+  margin: auto auto 10px auto;
+}
+
+#carousel__slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+}
+
+.btn-arrow {
+  position: absolute;
+  top: 14px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+a .arrow {
+  border: solid #901c1c;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 10px;
+  transition: transform 0.3s ease-out;
+  outline: none;
+}
+
+#right-btn {
+  margin: auto 0 auto -2em;
+  position: relative;
+  right: 410px;
+}
+
+#right-btn .arrow {
+  transform: rotate(-45deg);
+}
+
+#left-btn {
+  margin: auto -2em auto 0;
+  position: relative;
+  left: 410px;
+}
+
+#left-btn .arrow {
+  transform: rotate(135deg);
+}
+
+.closeCarousel {
+  position: absolute;
+  right: 410px;
+  top: 65px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.closeCarousel:before,
+.closeCarousel:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #901c1c;
+}
+
+.closeCarousel:before {
+  transform: rotate(45deg);
+}
+
+.closeCarousel:after {
+  transform: rotate(-45deg);
+}
+
+.title-media {
+  color: #901c1c;
+  font-size: 24px;
+  margin: 10px 74px;
 }
