@@ -8,7 +8,7 @@ export default class PhotographerItem {
   
         <div class="photographer" id=${this.photographer.id}>
         <a href="/photographer.html?id=${this.photographer.id}">
-        <img src="/Sample_Photos/Photographers_ID_Photos/${
+        <img src="Sample_Photos/Photographers_ID_Photos/${
           this.photographer.portrait
         }" alt=""/>
         <h2>${this.photographer.name}</h2>

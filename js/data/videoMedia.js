@@ -7,7 +7,7 @@ export default class VideoMedia {
     return `
       <div id="media-video" class="mediaType">
       <video id="video">
-      <source type="video/mp4" src="/Sample_photos/${this.media.photographerId}/${this.media.video}"
+      <source type="video/mp4" src="Sample_photos/${this.media.photographerId}/${this.media.video}"
       alt="">
       </video>
       </div>`;
