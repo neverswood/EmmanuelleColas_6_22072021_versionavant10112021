@@ -15,7 +15,7 @@ export default class BarTags {
   filter(tag) {
     this.photographers.map((photographer) => {
       const photographerElement = document.getElementById(photographer.id);
-      const isFiltered = photographer.tags.includes(tag.toLowerCase());
+      const isFiltered = photographer.tags.includes(tag);
 
       if (!isFiltered) {
         photographerElement.style.display = "none";
