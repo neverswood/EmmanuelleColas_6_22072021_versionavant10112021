@@ -3,60 +3,65 @@ export default class Dropdown {
     this.medias = medias;
     this.photographerPage = photographerPage;
     this.listbox = document.querySelector('[role="listbox"]');
-    //   this.addSelectOptionEventListener();
-    //this.keydownEvent();
-    this.event();
+    this.bindDropdownEventListeners();
+    this.bindDropdownKeyboardEventListeners();
     this.dropdownIsClosed = true;
   }
 
-  /* addSelectOptionEventListener() {
-    const characters = [...this.listbox.children];
+  bindDropdownEventListeners() {
+    const buttonSort = document.querySelector('.btn-sort');
+    const listOption = document.querySelector('.listOption');
 
-    this.listbox.addEventListener("click", (event) => {
-      const option = event.target.closest("li");
-      if (!option) return;
-      this.listbox.setAttribute("aria-activedescendant", option.id);
-      characters.forEach((element) => element.classList.remove("is-selected"));
-      option.classList.add("is-selected");
-    });
-  }*/
-
-  event() {
-    const buttonSort = document.querySelector(".btn-sort");
-    const listOption = document.querySelector(".listOption");
-
-    buttonSort.addEventListener("click", () => {
-      if (listOption.style.display == "none") {
-        listOption.style.display = "block";
-        document.querySelector(".fa-chevron-up").style.display = "none";
-        document.querySelector(".fa-chevron-down").style.display = "block";
-      } else if (listOption.style.display === "block") {
-        listOption.style.display = "none";
-        document.querySelector(".fa-chevron-up").style.display = "block";
-        document.querySelector(".fa-chevron-down").style.display = "none";
+    buttonSort.addEventListener('click', () => {
+      if (listOption.style.display == 'none') {
+        listOption.style.display = 'block';
+        document.querySelector('.fa-chevron-up').style.display = 'none';
+        document.querySelector('.fa-chevron-down').style.display = 'block';
+      } else if (listOption.style.display === 'block') {
+        listOption.style.display = 'none';
+        document.querySelector('.fa-chevron-up').style.display = 'block';
+        document.querySelector('.fa-chevron-down').style.display = 'none';
       }
     });
 
-    listOption.addEventListener("click", (e) => {
+    listOption.addEventListener('click', (e) => {
       this.sortMedias(e.target.dataset.value);
       this.photographerPage.drawGallery();
-      if (e.target.matches("li")) {
-        document.getElementById("selected").innerText = e.target.textContent;
-        document.getElementById("selected").style.paddingBottom = "23px";
+      if (e.target.matches('li')) {
+        document.getElementById('selected').innerText = e.target.textContent;
+        document.getElementById('selected').style.paddingBottom = '23px';
       }
     });
 
-    window.addEventListener("click", (e) => {
-      if (e.target.matches("#listOption *")) {
-        listOption.style.display = "none";
+    window.addEventListener('click', (e) => {
+      if (e.target.matches('#listOption *')) {
+        listOption.style.display = 'none';
+      }
+    });
+  }
+
+  bindDropdownKeyboardEventListeners() {
+    const listOption = document.querySelector('.listOption');
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target.matches('#listOption *')) {
+        const { key } = e;
+        if (key === 'Enter') {
+          this.sortMedias(e.target.dataset.value);
+          this.photographerPage.drawGallery();
+          listOption.style.display = 'none';
+        }
+        if (e.target.matches('li')) {
+          document.getElementById('selected').innerText = e.target.textContent;
+          document.getElementById('selected').style.paddingBottom = '23px';
+        }
       }
     });
   }
 
   sortMedias(sort) {
-    console.log("sort");
     switch (sort) {
-      case "popularity":
+      case 'popularity':
         this.medias.sort(function (a, b) {
           if (a.likes < b.likes) {
             return 1;
@@ -66,7 +71,7 @@ export default class Dropdown {
           return 0;
         });
         break;
-      case "date":
+      case 'date':
         this.medias.sort(function (a, b) {
           if (a.date < b.date) {
             return 1;
@@ -76,7 +81,7 @@ export default class Dropdown {
           return 0;
         });
         break;
-      case "title":
+      case 'title':
         this.medias.sort(function (a, b) {
           if (a.title < b.title) {
             return -1;

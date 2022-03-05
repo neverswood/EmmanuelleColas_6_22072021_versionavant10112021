@@ -1,18 +1,17 @@
-import MediaFactory from "../data/mediaFactory.js";
+import MediaFactory from '../data/mediaFactory.js';
 
 export default class Gallery {
   constructor(medias) {
     this.medias = medias;
-    this.options = document.querySelectorAll(".btn-option");
+    this.options = document.querySelectorAll('.btn-option');
     this.mediaFactory = new MediaFactory();
-    console.log("moun", this.medias);
   }
 
   renderGallery() {
     return this.medias
       .map((media) => {
         return `
-        <div class="box-list-item media-item" id="item-${media.id}"
+        <div class="box-list-item media-item" id="item-${media.id}" tabindex="0"
         data-id="${media.id}">
         ${this.mediaFactory.render(media)}
         <div class="box-list-presentation">
@@ -25,11 +24,11 @@ export default class Gallery {
         <span class="ilike">
         <span class="numberLike">${
           media.likes
-        }</span> <i class="fas fa-heart likeHeart"  id="like"></i></span>
+        }</span> <i class="fas fa-heart likeHeart"  id="like" tabindex="0"></i></span>
         </div>
         </div>
         </div>`;
       })
-      .join("");
+      .join('');
   }
 }

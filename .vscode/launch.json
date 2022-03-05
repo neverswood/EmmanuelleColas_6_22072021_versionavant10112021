@@ -8,14 +8,14 @@
             "type": "pwa-msedge",
             "request": "launch",
             "name": "index.htm",
-            "url": "http://localhost:5554",
+            "url": "http://localhost:5555",
             "webRoot": "${workspaceFolder}"
         },
         {
             "type": "pwa-msedge",
             "request": "launch",
             "name": "photographer.html",
-            "url": "http://localhost:5554/photographer.html?id=243",
+            "url": "http://localhost:5555/photographer.html?id=243",
             "webRoot": "${workspaceFolder}"
         }
     ]

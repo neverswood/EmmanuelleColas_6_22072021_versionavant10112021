@@ -1,15 +1,15 @@
-import Carousel from "./carousel.js";
-import Dropdown from "./dropdown.js";
-import Gallery from "./gallery.js";
-import Likes from "./likes.js";
-import ModalContact from "./modalContact.js";
-import PhotographerInfos from "./photographerInfos.js";
+import Carousel from './carousel.js';
+import Dropdown from './dropdown.js';
+import Gallery from './gallery.js';
+import Likes from './likes.js';
+import ModalContact from './modalContact.js';
+import PhotographerInfos from './photographerInfos.js';
 
 export default class PhotographerPage {
   constructor(data) {
     //
     const url = new URLSearchParams(window.location.search);
-    this.id = url.get("id");
+    this.id = url.get('id');
     this.photographer = data.photographers.find((photographer) => {
       return photographer.id === Number(this.id);
     });
@@ -26,28 +26,42 @@ export default class PhotographerPage {
     this.carousel = new Carousel(this.mediaPhotographerList);
     this.drawPhotographerPage();
     this.drawGallery();
+    this.bindKeyboardEventListeners();
   }
 
   drawPhotographerPage() {
     const photographerPresentation = document.getElementById(
-      "presentation-photographer"
+      'presentation-photographer'
     );
     photographerPresentation.innerHTML =
       this.photographerInfos.renderPhotographerInfos();
-    const modalContact = document.getElementById("header-form");
+    const modalContact = document.getElementById('header-form');
     modalContact.innerHTML = this.modalContact.renderModalContact();
     this.modalContact.bindModalContactEventListeners();
-    document.querySelector(".likes-price").innerHTML =
+    document.querySelector('.likes-price').innerHTML =
       this.likes.displayLikesAndPrice();
   }
 
   drawGallery() {
-    const gallery = document.getElementById("box-list");
+    const gallery = document.getElementById('box-list');
     gallery.innerHTML = this.gallery.renderGallery();
     this.likes.incrementLikesMedias();
     this.likes.incrementLikes();
-    document.getElementById("carousel").innerHTML =
+    this.likes.bindKeyboardEventListeners();
+
+    document.getElementById('carousel').innerHTML =
       this.carousel.displayCarousel();
     this.carousel.bindCarouselEventListener();
+    this.carousel.bindKeyboardEventListeners();
+  }
+
+  bindKeyboardEventListeners() {
+    window.addEventListener('keydown', (e) => {
+      const { key } = e;
+      if (key === 'Escape') {
+        document.getElementById('bground').style.display = 'none';
+        document.getElementById('listOption').style.display = 'none';
+      }
+    });
   }
 }

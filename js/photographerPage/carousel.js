@@ -1,4 +1,4 @@
-import MediaFactory from "../data/mediaFactory.js";
+import MediaFactory from '../data/mediaFactory.js';
 
 export default class Carousel {
   mediaIndex;
@@ -21,18 +21,18 @@ export default class Carousel {
   }
 
   bindCarouselEventListener() {
-    const medias = document.querySelectorAll(".media-item");
-    const close = document.querySelector(".closeCarousel");
+    const medias = document.querySelectorAll('.media-item');
+    const close = document.querySelector('.closeCarousel');
 
-    close.addEventListener("click", () => {
-      document.getElementById("carousel").style.display = "none";
-      document.getElementById("photographer-page").style.position = "initial";
+    close.addEventListener('click', () => {
+      document.getElementById('carousel').style.display = 'none';
+      document.getElementById('photographer-page').style.position = 'initial';
     });
 
     medias.forEach((media) => {
-      media.addEventListener("click", () => {
-        document.getElementById("carousel").style.display = "block";
-        document.getElementById("photographer-page").style.position = "fixed";
+      media.addEventListener('click', () => {
+        document.getElementById('carousel').style.display = 'block';
+        document.getElementById('photographer-page').style.position = 'fixed';
         const mediaCurrent = this.medias.find(
           (m) => Number(m.id) === Number(media.dataset.id)
         );
@@ -40,9 +40,9 @@ export default class Carousel {
         this.mediaIndex = this.medias.findIndex(
           (m) => Number(m.id) === Number(media.dataset.id)
         );
-        document.querySelector(".media-carousel").innerHTML =
+        document.querySelector('.media-carousel').innerHTML =
           this.mediaFactory.render(mediaCurrent);
-        document.querySelector(".title-media").innerHTML = mediaCurrent.title;
+        document.querySelector('.title-media').innerHTML = mediaCurrent.title;
 
         this.changeMedia();
       });
@@ -53,15 +53,15 @@ export default class Carousel {
     const moveRight = () => {
       if (this.mediaIndex === this.medias.length - 1) {
         this.mediaIndex = 0;
-        document.querySelector(".media-carousel").innerHTML =
+        document.querySelector('.media-carousel').innerHTML =
           this.mediaFactory.render(this.medias[this.mediaIndex + 1]);
-        document.querySelector(".title-media").innerHTML =
+        document.querySelector('.title-media').innerHTML =
           this.medias[this.mediaIndex + 1].title;
         return;
       }
-      document.querySelector(".media-carousel").innerHTML =
+      document.querySelector('.media-carousel').innerHTML =
         this.mediaFactory.render(this.medias[this.mediaIndex + 1]);
-      document.querySelector(".title-media").innerHTML =
+      document.querySelector('.title-media').innerHTML =
         this.medias[this.mediaIndex + 1].title;
 
       this.mediaIndex++;
@@ -70,21 +70,89 @@ export default class Carousel {
     const moveLeft = () => {
       if (this.mediaIndex < 1) {
         this.mediaIndex = this.medias.length;
-        document.querySelector(".media-carousel").innerHTML =
+        document.querySelector('.media-carousel').innerHTML =
           this.mediaFactory.render(this.medias[this.mediaIndex - 1]);
-        document.querySelector(".title-media").innerHTML =
+        document.querySelector('.title-media').innerHTML =
           this.medias[this.mediaIndex - 1].title;
         return;
       }
-      document.querySelector(".media-carousel").innerHTML =
+      document.querySelector('.media-carousel').innerHTML =
         this.mediaFactory.render(this.medias[this.mediaIndex - 1]);
-      document.querySelector(".title-media").innerHTML =
+      document.querySelector('.title-media').innerHTML =
         this.medias[this.mediaIndex - 1].title;
 
       this.mediaIndex--;
     };
 
-    document.getElementById("right-btn").addEventListener("click", moveRight);
-    document.getElementById("left-btn").addEventListener("click", moveLeft);
+    document.getElementById('right-btn').addEventListener('click', moveRight);
+    document.getElementById('left-btn').addEventListener('click', moveLeft);
+  }
+
+  bindKeyboardEventListeners() {
+    window.addEventListener('keydown', (e) => {
+      if (
+        document.getElementById('carousel').style.display === 'none' ||
+        document.getElementById('carousel').style.display === ''
+      ) {
+        return;
+      }
+      const { key } = e;
+      if (key === 'Escape') {
+        document.getElementById('carousel').style.display = 'none';
+      }
+      const medias = document.querySelectorAll('.media-item');
+      medias.forEach((media) => {
+        if (e.target.matches('.media-item')) {
+          if (key === 'Enter') {
+            document.getElementById('carousel').style.display = 'block';
+            document.getElementById('photographer-page').style.position =
+              'fixed';
+            const mediaCurrent = this.medias.find(
+              (m) => Number(m.id) === Number(media.dataset.id)
+            );
+
+            this.mediaIndex = this.medias.findIndex(
+              (m) => Number(m.id) === Number(media.dataset.id)
+            );
+            document.querySelector('.media-carousel').innerHTML =
+              this.mediaFactory.render(mediaCurrent);
+            document.querySelector('.title-media').innerHTML =
+              mediaCurrent.title;
+          }
+        }
+      });
+      if (key === 'ArrowRight') {
+        if (this.mediaIndex === this.medias.length - 1) {
+          this.mediaIndex = 0;
+          document.querySelector('.media-carousel').innerHTML =
+            this.mediaFactory.render(this.medias[this.mediaIndex + 1]);
+          document.querySelector('.title-media').innerHTML =
+            this.medias[this.mediaIndex + 1].title;
+          return;
+        }
+        document.querySelector('.media-carousel').innerHTML =
+          this.mediaFactory.render(this.medias[this.mediaIndex + 1]);
+        document.querySelector('.title-media').innerHTML =
+          this.medias[this.mediaIndex + 1].title;
+
+        this.mediaIndex++;
+      }
+      if (key === 'ArrowLeft') {
+        if (this.mediaIndex < 1) {
+          this.mediaIndex = this.medias.length;
+          document.querySelector('.media-carousel').innerHTML =
+            this.mediaFactory.render(this.medias[this.mediaIndex - 1]);
+          document.querySelector('.title-media').innerHTML =
+            this.medias[this.mediaIndex - 1].title;
+          return;
+        }
+        document.querySelector('.media-carousel').innerHTML =
+          this.mediaFactory.render(this.medias[this.mediaIndex - 1]);
+        document.querySelector('.title-media').innerHTML =
+          this.medias[this.mediaIndex - 1].title;
+
+        this.mediaIndex--;
+      }
+    });
   }
 }

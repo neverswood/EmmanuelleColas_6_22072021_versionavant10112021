@@ -5,20 +5,19 @@ export default class Likes {
     this.sumLike = this.medias.reduce((currentSumLike, medium) => {
       return medium.likes + currentSumLike;
     }, 0);
-    console.log(this.medias);
   }
 
   displayLikesAndPrice() {
     return `
-      <span class="totalLike">${this.sumLike} <i class="fas fa-heart"></i></span>
-      <span class="price">${this.photographer.price} €/jour</span>
-      `;
+        <span class="totalLike">${this.sumLike} <i class="fas fa-heart"></i></span>
+        <span class="price">${this.photographer.price} €/jour</span>
+        `;
   }
 
   incrementLikes() {
-    const like = document.querySelectorAll(".likeHeart");
+    const like = document.querySelectorAll('.likeHeart');
     for (let index = 0; index < like.length; index++) {
-      like[index].addEventListener("click", () => {
+      like[index].addEventListener('click', () => {
         this.resetLikes(this.sumLike++);
       });
     }
@@ -30,10 +29,10 @@ export default class Likes {
 
   displaySumLikes(val) {
     document.querySelector(
-      ".likes-price"
+      '.likes-price'
     ).innerHTML = `<span class="totalLikes">${val} <i class="fas fa-heart"></i></span>
-    <span class="price">${this.photographer.price} €/jour</span>
-    `;
+      <span class="price">${this.photographer.price} €/jour</span>
+      `;
   }
 
   //Likes under the medias
@@ -44,13 +43,27 @@ export default class Likes {
   }
 
   incrementLikesMedias() {
-    const like = document.querySelectorAll(".ilike");
+    const like = document.querySelectorAll('.ilike');
 
     for (let index = 0; index < like.length; index++) {
-      like[index].addEventListener("click", (e) => {
+      like[index].addEventListener('click', (e) => {
         let currentLike = e.currentTarget.firstElementChild.textContent;
         e.currentTarget.firstElementChild.innerHTML = Number(currentLike) + 1;
       });
     }
+  }
+
+  bindKeyboardEventListeners() {
+    window.addEventListener('keydown', (e) => {
+      const { key } = e;
+      if (key === 'Enter') {
+        if (e.target.matches('.ilike *')) {
+          let currentLike = e.target.previousElementSibling.textContent;
+
+          e.target.previousElementSibling.innerHTML = Number(currentLike) + 1;
+          this.resetLikes(this.sumLike++);
+        }
+      }
+    });
   }
 }
