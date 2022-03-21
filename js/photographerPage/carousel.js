@@ -90,23 +90,15 @@ export default class Carousel {
 
   bindKeyboardEventListeners() {
     window.addEventListener('keydown', (e) => {
-      if (
-        document.getElementById('carousel').style.display === 'none' ||
-        document.getElementById('carousel').style.display === ''
-      ) {
-        return;
-      }
       const { key } = e;
       if (key === 'Escape') {
         document.getElementById('carousel').style.display = 'none';
       }
       const medias = document.querySelectorAll('.media-item');
       medias.forEach((media) => {
-        if (e.target.matches('.media-item')) {
-          if (key === 'Enter') {
+        if (key === 'Enter') {
+          if (e.target.matches('.media-item')) {
             document.getElementById('carousel').style.display = 'block';
-            document.getElementById('photographer-page').style.position =
-              'fixed';
             const mediaCurrent = this.medias.find(
               (m) => Number(m.id) === Number(media.dataset.id)
             );

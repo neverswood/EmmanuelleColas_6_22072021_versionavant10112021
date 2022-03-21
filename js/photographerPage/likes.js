@@ -59,7 +59,6 @@ export default class Likes {
       if (key === 'Enter') {
         if (e.target.matches('.ilike *')) {
           let currentLike = e.target.previousElementSibling.textContent;
-
           e.target.previousElementSibling.innerHTML = Number(currentLike) + 1;
           this.resetLikes(this.sumLike++);
         }
