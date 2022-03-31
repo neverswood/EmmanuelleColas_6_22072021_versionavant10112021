@@ -20,7 +20,10 @@ export default class ModalContact {
   displayOpenModal() {
     this.modalbg.style.display = 'block';
     document.getElementById('modal-message').style.display = 'none';
+    document.getElementById('modal-name').style.display = 'block';
+    document.getElementById('sectionForm').className = 'sectionFormOpen';
     this.renderModalContact();
+    console.log(this.renderModalContact);
     document.getElementById('first').focus();
   }
 
@@ -29,7 +32,7 @@ export default class ModalContact {
   }
 
   bindModalContactEventListeners() {
-    const buttonContact = document.getElementById('open');
+    const buttonContact = document.querySelectorAll('#open');
     const modalClose = document.querySelectorAll('.close');
     buttonContact.addEventListener('click', () => {
       this.displayOpenModal();
