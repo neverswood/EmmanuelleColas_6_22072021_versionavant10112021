@@ -190,6 +190,7 @@ main {
   border: transparent;
   border-radius: 5px;
   margin: 50px 400px 50px 50px;
+  cursor: pointer;
 }
 
 /* dropdown */
@@ -201,6 +202,10 @@ main {
 .sorting label {
   font-weight: bold;
   margin-right: 30px;
+}
+
+#select-option * {
+  cursor: pointer;
 }
 
 #btn-sort,
@@ -381,6 +386,10 @@ main {
   bottom: 0;
   border-radius: 5px 5px 0 0;
   font-weight: bold;
+}
+
+.ilike {
+  cursor: pointer;
 }
 
 /* Modal Contact */

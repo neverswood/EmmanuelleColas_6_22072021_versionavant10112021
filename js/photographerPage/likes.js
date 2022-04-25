@@ -54,14 +54,18 @@ export default class Likes {
   }
 
   bindKeyboardEventListeners() {
-    window.addEventListener('keydown', (e) => {
+    const like = document.querySelector('.ilike');
+    console.log('li', like);
+    like.addEventListener('keydown', (e) => {
+      console.log('li2', e);
+
       const { key } = e;
       if (key === 'Enter') {
-        if (e.target.matches('.ilike *')) {
-          let currentLike = e.target.previousElementSibling.textContent;
-          e.target.previousElementSibling.innerHTML = Number(currentLike) + 1;
-          this.resetLikes(this.sumLike++);
-        }
+        // if (e.target.matches('.ilike *')) {
+        let currentLike = e.target.previousElementSibling.textContent;
+        e.target.previousElementSibling.innerHTML = Number(currentLike) + 1;
+        this.resetLikes(this.sumLike++);
+        // }
       }
     });
   }

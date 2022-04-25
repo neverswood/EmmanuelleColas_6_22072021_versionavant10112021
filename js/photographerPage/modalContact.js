@@ -32,7 +32,7 @@ export default class ModalContact {
   }
 
   bindModalContactEventListeners() {
-    const buttonContact = document.querySelectorAll('#open');
+    const buttonContact = document.getElementById('open');
     const modalClose = document.querySelectorAll('.close');
     buttonContact.addEventListener('click', () => {
       this.displayOpenModal();

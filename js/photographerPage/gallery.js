@@ -11,7 +11,7 @@ export default class Gallery {
     return this.medias
       .map((media) => {
         return `
-        <div class="box-list-item media-item" id="item-${media.id}" tabindex="0"
+        <div class="box-list-item media-item" id="item-${media.id}" 
         data-id="${media.id}">
         ${this.mediaFactory.render(media)}
         <div class="box-list-presentation">

@@ -5,7 +5,7 @@ export default class ImageMedia {
 
   getHtml() {
     return `
-      <div id="media-image" class="mediaType" >
+      <div id="media-image" class="mediaType" tabindex="0">
         <img
           id="index"
           src="Sample_photos/${this.media.photographerId}/${this.media.image}"
