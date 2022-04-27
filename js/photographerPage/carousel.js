@@ -32,7 +32,7 @@ export default class Carousel {
     medias.forEach((media) => {
       media.addEventListener('click', (e) => {
         document.getElementById('carousel').style.display = 'block';
-        document.getElementById('photographer-page').style.position = 'fixed';
+        //document.getElementById('photographer-page').style.position = 'fixed';
         const mediaItem = e.target.parentElement.closest('.media-item');
         console.log('p', mediaItem, e);
 
@@ -91,31 +91,23 @@ export default class Carousel {
 
   bindKeyboardEventListeners() {
     const medias = document.querySelectorAll('.mediaType');
-    console.log('m', medias);
-
     medias.forEach((media) => {
       media.addEventListener('keydown', (e) => {
-        console.log('lp', media);
         const { key } = e;
 
         if (key === 'Enter') {
-          //if (e.target) {
           document.getElementById('carousel').style.display = 'block';
           const mediaItem = e.target.parentElement;
           const mediaCurrent = this.medias.find(
             (m) => Number(m.id) === Number(mediaItem.dataset.id)
           );
-          console.log('r3', this.medias);
 
           this.mediaIndex = this.medias.findIndex(
             (m) => Number(m.id) === Number(mediaItem.dataset.id)
           );
           document.querySelector('.media-carousel').innerHTML =
             this.mediaFactory.render(mediaCurrent);
-          console.log('r', mediaCurrent);
-
           document.querySelector('.title-media').innerHTML = mediaCurrent.title;
-          //}
         }
       });
     });

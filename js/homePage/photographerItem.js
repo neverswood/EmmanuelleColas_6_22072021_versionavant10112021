@@ -7,7 +7,7 @@ export default class PhotographerItem {
     return `
   
         <div class="photographer" id=${this.photographer.id}>
-        <a href="/photographer.html?id=${this.photographer.id}">
+        <a href="photographer.html?id=${this.photographer.id}">
         <img src="Sample_Photos/Photographers_ID_Photos/${
           this.photographer.portrait
         }" alt=""/>
@@ -15,10 +15,10 @@ export default class PhotographerItem {
         </a>
         <div class="photographer_presentation">
         <h3>${
-          this.photographer.city + " , " + " " + this.photographer.country
+          this.photographer.city + ' , ' + ' ' + this.photographer.country
         }</h3>
         <p>${this.photographer.tagline}</p>
-        <span>${this.photographer.price + "€/jour"}</span>
+        <span>${this.photographer.price + '€/jour'}</span>
         </div>
         <div class="photographer-tag">
         ${this.photographer.tags
@@ -30,7 +30,7 @@ export default class PhotographerItem {
             </a>
             `
           )
-          .join("")}
+          .join('')}
         </div>
         </div>
         `;
