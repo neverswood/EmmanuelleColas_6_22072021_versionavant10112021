@@ -1,6 +1,7 @@
 * {
   font-family: 'DM Sans', sans-serif;
   text-decoration: none;
+  font-style: none;
 }
 
 header {
@@ -13,9 +14,8 @@ header a {
   color: #911c1c;
 }
 
-#logo {
-  font-size: 40px;
-  font-weight: bolder;
+.logo {
+  width: 220px;
   margin: 0 127px 0 60px;
 }
 
@@ -164,6 +164,10 @@ main {
 
 #presentation-photographer h2 {
   color: #901c1c;
+}
+
+#presentation-photographer p {
+  color: black;
 }
 
 .photographer-name {
@@ -380,6 +384,7 @@ main {
   align-items: center;
   height: 45px;
   width: 285px;
+  color: black;
   background-color: #db8876;
   position: fixed;
   right: 40px;
