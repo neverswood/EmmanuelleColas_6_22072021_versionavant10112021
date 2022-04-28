@@ -8,6 +8,7 @@ export default class ModalContact {
     this.formContact = new FormContact();
   }
 
+  /* Compute the html for the top of the modal contact in order to include the name of the photographer*/
   renderModalContact() {
     return `
       <div id="modal-name">
@@ -17,6 +18,7 @@ export default class ModalContact {
       `;
   }
 
+  /* Display the modal contact */
   displayOpenModal() {
     this.modalbg.style.display = 'block';
     document.getElementById('modal-message').style.display = 'none';
@@ -27,10 +29,12 @@ export default class ModalContact {
     document.getElementById('first').focus();
   }
 
+  /* Close the modal contact */
   displayCloseModal() {
     this.modalbg.style.display = 'none';
   }
 
+  /* Add event related to the opening and closing of the modal contact*/
   bindModalContactEventListeners() {
     const buttonContact = document.getElementById('open');
     const modalClose = document.querySelectorAll('.close');

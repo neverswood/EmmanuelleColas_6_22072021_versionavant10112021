@@ -1,3 +1,5 @@
+/* Handle media sorting by popularity, date and title.
+   #todo rename this class with something more precise */
 export default class Dropdown {
   constructor(medias, photographerPage) {
     this.medias = medias;
@@ -8,10 +10,12 @@ export default class Dropdown {
     this.dropdownIsClosed = true;
   }
 
+  /* Add events related to the dropdown */
   bindDropdownEventListeners() {
     const buttonSort = document.querySelector('.btn-sort');
     const listOption = document.querySelector('.listOption');
 
+    /* Open and close a dropdown */
     buttonSort.addEventListener('click', () => {
       if (listOption.style.display == 'none') {
         listOption.style.display = 'block';
@@ -24,6 +28,7 @@ export default class Dropdown {
       }
     });
 
+    /* Sort and redraw the gallery, according the user choice */
     listOption.addEventListener('click', (e) => {
       this.sortMedias(e.target.dataset.value);
       this.photographerPage.drawGallery();
@@ -33,6 +38,7 @@ export default class Dropdown {
       }
     });
 
+    /* Close the dropdown when the user click outside*/
     window.addEventListener('click', (e) => {
       if (e.target.matches('#listOption *')) {
         listOption.style.display = 'none';
@@ -40,6 +46,7 @@ export default class Dropdown {
     });
   }
 
+  /* Add keybord events related to the dropdown*/
   bindDropdownKeyboardEventListeners() {
     const listOption = document.querySelector('.listOption');
 
@@ -59,6 +66,7 @@ export default class Dropdown {
     });
   }
 
+  /* Sort medias according to criteria specified by the `sort` argument */
   sortMedias(sort) {
     switch (sort) {
       case 'popularity':

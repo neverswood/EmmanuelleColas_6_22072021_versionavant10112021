@@ -7,6 +7,8 @@ export default class Likes {
     }, 0);
   }
 
+  /* Compute the html for likes and price.
+     #todo rename this function to renderLikesAndPrice */
   displayLikesAndPrice() {
     return `
         <span class="totalLike">${this.sumLike} <i class="fas fa-heart"></i></span>
@@ -14,6 +16,7 @@ export default class Likes {
         `;
   }
 
+  /* Add click events to increment total likes media */
   incrementLikes() {
     const like = document.querySelectorAll('.likeHeart');
     for (let index = 0; index < like.length; index++) {
@@ -23,10 +26,12 @@ export default class Likes {
     }
   }
 
+  /* Reset the display of likes */
   resetLikes() {
     this.displaySumLikes(this.sumLike);
   }
 
+  /* Display likes and price in the document */
   displaySumLikes(val) {
     document.querySelector(
       '.likes-price'
@@ -35,13 +40,15 @@ export default class Likes {
       `;
   }
 
-  //Likes under the medias
+  /* Display likes.
+     #todo this function seems unused, remove it */
   displayLikesMedias() {
     this.medias.map((media) => {
       return `<span class"ilike">${media.likes} <i class="fas fa-heart likeHeart"  id="like"></i></span>`;
     });
   }
 
+  /* Add click events to increment likes under the medias */
   incrementLikesMedias() {
     const like = document.querySelectorAll('.ilike');
 
@@ -53,6 +60,7 @@ export default class Likes {
     }
   }
 
+  /* Add keyboard events to increment likes under the medias */
   bindKeyboardEventListeners() {
     const like = document.querySelector('.ilike');
     like.addEventListener('keydown', (e) => {

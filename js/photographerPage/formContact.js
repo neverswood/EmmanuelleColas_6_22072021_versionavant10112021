@@ -4,16 +4,19 @@ export default class FormContact {
     this.addEventListener();
   }
 
+  /* Display error message */
   addError(label, message) {
     document.getElementById(label).style.border = '2px solid red';
     document.getElementById(`${label}Error`).textContent = message;
   }
 
+  /* Hide error message */
   removeError(label) {
     document.getElementById(label).style.border = 'none';
     document.getElementById(`${label}Error`).textContent = '';
   }
 
+  /* Display fields in the console */
   logInput() {
     const firstName = document.getElementById('first').value;
     console.log('ValeurInputFirstName', firstName);
@@ -23,6 +26,7 @@ export default class FormContact {
     console.log('ValeurInputEmail', email);
   }
 
+  /* Add events related to the contact form and its errors */
   addEventListener() {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();

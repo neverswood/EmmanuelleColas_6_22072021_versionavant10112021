@@ -7,6 +7,7 @@ export default class Gallery {
     this.mediaFactory = new MediaFactory();
   }
 
+  /* Compute the html for the medias of the gallery */
   renderGallery() {
     return this.medias
       .map((media) => {

@@ -3,6 +3,7 @@ export default class PhotographerInfos {
     this.photographers = photographers;
   }
 
+  /* Compute the html for the information of a single photographer */
   renderPhotographerInfos() {
     return `
           <div>

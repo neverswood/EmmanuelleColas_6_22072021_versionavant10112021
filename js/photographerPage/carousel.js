@@ -7,7 +7,8 @@ export default class Carousel {
     this.mediaFactory = new MediaFactory();
   }
 
-  displayCarousel() {
+  /* Compute the html for the carousel */
+  renderCarousel() {
     return `
           <div id="carousel__div">
           <span  class="closeCarousel" id="closeCarousel"></span>
@@ -20,21 +21,22 @@ export default class Carousel {
           </div>`;
   }
 
+  /* Add events related to the carousel */
   bindCarouselEventListener() {
     const medias = document.querySelectorAll('.mediaType');
     const close = document.querySelector('.closeCarousel');
 
+    /* Handle the closing of the carousel */
     close.addEventListener('click', () => {
       document.getElementById('carousel').style.display = 'none';
       document.getElementById('photographer-page').style.position = 'initial';
     });
 
+    /* Open selected media in the carousel */
     medias.forEach((media) => {
       media.addEventListener('click', (e) => {
         document.getElementById('carousel').style.display = 'block';
-        //document.getElementById('photographer-page').style.position = 'fixed';
         const mediaItem = e.target.parentElement.closest('.media-item');
-        console.log('p', mediaItem, e);
 
         const mediaCurrent = this.medias.find(
           (m) => Number(m.id) === Number(mediaItem.dataset.id)
@@ -50,6 +52,7 @@ export default class Carousel {
     });
   }
 
+  /* Move from the previous media to the next media and vice versa with the arrows */
   changeMedia() {
     const moveRight = () => {
       if (this.mediaIndex === this.medias.length - 1) {
@@ -89,12 +92,14 @@ export default class Carousel {
     document.getElementById('left-btn').addEventListener('click', moveLeft);
   }
 
+  /* Add keyboard events related to the carousel */
   bindKeyboardEventListeners() {
     const medias = document.querySelectorAll('.mediaType');
     medias.forEach((media) => {
       media.addEventListener('keydown', (e) => {
         const { key } = e;
 
+        /* Open selected media in the carousel*/
         if (key === 'Enter') {
           document.getElementById('carousel').style.display = 'block';
           const mediaItem = e.target.parentElement;
@@ -114,9 +119,13 @@ export default class Carousel {
 
     window.addEventListener('keydown', (e) => {
       const { key } = e;
+
+      /* Handle the closing of the carousel */
       if (key === 'Escape') {
         document.getElementById('carousel').style.display = 'none';
       }
+
+      /* Move from the previous media to the next media and vice versa with the arrows keys */
       if (key === 'ArrowRight') {
         if (this.mediaIndex === this.medias.length - 1) {
           this.mediaIndex = 0;

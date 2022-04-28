@@ -1,6 +1,6 @@
-import BarTags from "./barTags.js";
-import PhotographerItem from "./photographerItem.js";
-import ReturnMain from "./returnMain.js";
+import BarTags from './barTags.js';
+import PhotographerItem from './photographerItem.js';
+import ReturnMain from './returnMain.js';
 
 export default class HomePage {
   constructor(data) {
@@ -9,25 +9,27 @@ export default class HomePage {
     });
     this.returnMain = new ReturnMain();
     this.barTags = new BarTags(data);
-    document.getElementById("photographers").innerHTML =
+    document.getElementById('photographers').innerHTML =
       this.renderPhotographerItems();
     this.bindKeyboardEventListeners();
   }
 
+  /* Compute the html for photographer items displayed on the homepage */
   renderPhotographerItems() {
     return `${this.photographerItems
       .map((photographerItem) => photographerItem.renderPhotographerItem())
-      .join("")}`;
+      .join('')}`;
   }
 
+  /* Filter photographers by their tags with keyboard navigation */
   bindKeyboardEventListeners() {
-    window.addEventListener("keydown", (e) => {
-      if (e.target.matches("#header-navbar > a")) {
+    window.addEventListener('keydown', (e) => {
+      if (e.target.matches('#header-navbar > a')) {
         const filterName = e.target
-          .querySelector(".btnTags")
-          .getAttribute("data-filter");
+          .querySelector('.btnTags')
+          .getAttribute('data-filter');
         const { key } = e;
-        if (key === "Enter") {
+        if (key === 'Enter') {
           this.barTags.filter(filterName);
         }
       }

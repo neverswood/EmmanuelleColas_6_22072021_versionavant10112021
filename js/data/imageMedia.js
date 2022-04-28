@@ -4,12 +4,13 @@ export default class ImageMedia {
   }
 
   getHtml() {
+    console.log('rout', this.media.alt);
     return `
       <div id="media-image" class="mediaType" tabindex="0">
         <img
           id="index"
           src="Sample_photos/${this.media.photographerId}/${this.media.image}"
-          alt=""
+          alt="${this.media.alt}"
           class="image-photographerBox gallery">
       </div>`;
   }

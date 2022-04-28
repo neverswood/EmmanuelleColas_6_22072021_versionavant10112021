@@ -29,6 +29,7 @@ export default class PhotographerPage {
     this.bindKeyboardEventListeners();
   }
 
+  /* Display the photographer page */
   drawPhotographerPage() {
     const photographerPresentation = document.getElementById(
       'presentation-photographer'
@@ -42,6 +43,7 @@ export default class PhotographerPage {
       this.likes.displayLikesAndPrice();
   }
 
+  /* Display the gallery of the photographer */
   drawGallery() {
     const gallery = document.getElementById('box-list');
     gallery.innerHTML = this.gallery.renderGallery();
@@ -55,6 +57,7 @@ export default class PhotographerPage {
     this.carousel.bindKeyboardEventListeners();
   }
 
+  /* Add keyboard events related to the photographer page*/
   bindKeyboardEventListeners() {
     window.addEventListener('keydown', (e) => {
       const { key } = e;
