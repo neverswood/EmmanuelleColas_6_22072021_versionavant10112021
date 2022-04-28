@@ -52,7 +52,7 @@ export default class PhotographerPage {
     this.likes.bindKeyboardEventListeners();
 
     document.getElementById('carousel').innerHTML =
-      this.carousel.displayCarousel();
+      this.carousel.renderCarousel();
     this.carousel.bindCarouselEventListener();
     this.carousel.bindKeyboardEventListeners();
   }
