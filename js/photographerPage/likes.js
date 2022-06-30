@@ -62,13 +62,15 @@ export default class Likes {
 
   /* Add keyboard events to increment likes under the medias */
   bindKeyboardEventListeners() {
-    const like = document.querySelector('.ilike');
-    like.addEventListener('keydown', (e) => {
-      const { key } = e;
-      if (key === 'Enter') {
-        let currentLike = e.target.previousElementSibling.textContent;
-        e.target.previousElementSibling.innerHTML = Number(currentLike) + 1;
-        this.resetLikes(this.sumLike++);
+    window.addEventListener('keydown', (e) => {
+      if (e.target.matches('.ilike')) {
+        const { key } = e;
+        if (key === 'Enter') {
+          console.log(e.target.textContent);
+          let currentLike = e.target.firstElementChild.textContent;
+          e.target.firstElementChild.innerHTML = Number(currentLike) + 1;
+          this.resetLikes(this.sumLike++);
+        }
       }
     });
   }
