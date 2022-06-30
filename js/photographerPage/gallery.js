@@ -22,10 +22,10 @@ export default class Gallery {
         </div>
         <div class="box-list-presentation__priceLike">
         <span class="price">${media.price}€</span>
-        <span class="ilike">
+        <span class="ilike" tabindex="0">
         <span class="numberLike">${
           media.likes
-        }</span> <i class="fas fa-heart likeHeart"  id="like" tabindex="0"></i></span>
+        }</span> <i class="fas fa-heart likeHeart"  id="like" ></i></span>
         </div>
         </div>
         </div>`;
