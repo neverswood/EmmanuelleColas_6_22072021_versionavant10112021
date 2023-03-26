@@ -9,7 +9,7 @@ export default class ImageMedia {
       <div id="media-image" class="mediaType" tabindex="0">
         <img
           id="index"
-          src="/Sample_photos/${this.media.photographerId}/${this.media.image}"
+          src="../Sample_photos/${this.media.photographerId}/${this.media.image}"
           alt="${this.media.alt}"
           class="image-photographerBox gallery">
       </div>`;
