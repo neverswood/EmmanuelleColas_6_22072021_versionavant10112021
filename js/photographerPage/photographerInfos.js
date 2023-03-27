@@ -19,7 +19,7 @@ export default class PhotographerInfos {
           </div>
           </div>
           <button id="open" class="open" type="button">Contactez-moi</button>
-          <img  src="/Sample_Photos/Photographers_ID_Photos/${
+          <img  src="Sample_Photos/Photographers_ID_Photos/${
             this.photographers.portrait
           }" alt="" />
           `;
